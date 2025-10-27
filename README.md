@@ -80,7 +80,7 @@ npm install axios
 ## Get data using axios
 
 
-```
+```tsx
 // api/ PostApi.tsx
 import axios from "axios";
 
@@ -95,7 +95,7 @@ export const getPost = () => {
 ```
 
 // App.tsx
-```
+```tsx
 import { useEffect } from "react";
 import { getPost } from "./api/PostApi";
 
