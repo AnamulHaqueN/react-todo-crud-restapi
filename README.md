@@ -79,7 +79,8 @@ npm install axios
 
 ## Get data using axios
 
-// App.tsx
+`src/App.tsx`
+
 ```tsx
 import Posts from "./components/Posts";
 import './App.css'
@@ -95,9 +96,9 @@ const App = () => {
 export default App;
 ```
 
+`src/api/PostApi.tsx`
 
 ```tsx
-// api/ PostApi.tsx
 import axios from "axios";
 
 const api = axios.create({
@@ -110,7 +111,8 @@ export const getPost = () => {
 };
 ```
 
-// Posts.tsx
+`src/components/Posts.tsx`
+
 ```tsx
 import { useEffect } from "react";
 import { getPost } from "./api/PostApi";
@@ -135,7 +137,8 @@ export default Posts;
 
 ## delete data Using Axios
 
-// api/ PostApi.tsx
+`src/api/PostApi.tsx`
+
 ```tsx
 // delete method
 export const deletePost = (id: number) => {
@@ -143,7 +146,8 @@ export const deletePost = (id: number) => {
 }
 ```
 
-// Posts.tsx
+`src/components/Posts.tsx`
+
 ```tsx
 const handleDelete = async(id: number) => {
     try {
