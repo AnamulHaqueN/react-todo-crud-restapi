@@ -8,3 +8,8 @@ const api = axios.create({
 export const getPost = () => {
     return api.get("/posts");
 };
+
+// delete method
+export const deletePost = (id: number) => {
+    return api.delete(`/posts/${id}`)
+}

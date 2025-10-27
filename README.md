@@ -79,6 +79,22 @@ npm install axios
 
 ## Get data using axios
 
+// App.tsx
+```tsx
+import Posts from "./components/Posts";
+import './App.css'
+
+const App = () => {
+  return (
+    <section className="main-section">
+      <Posts />
+    </section>
+  )
+}
+
+export default App;
+```
+
 
 ```tsx
 // api/ PostApi.tsx
@@ -94,13 +110,13 @@ export const getPost = () => {
 };
 ```
 
-// App.tsx
+// Posts.tsx
 ```tsx
 import { useEffect } from "react";
 import { getPost } from "./api/PostApi";
 
 
-const App = () => {
+const Posts = () => {
   
   const getPostData = async () => {
     const res = await getPost();
@@ -114,5 +130,36 @@ const App = () => {
   return <h1>Hello React CURD</h1>
 }
 
-export default App;
+export default Posts;
+```
+
+## delete data Using Axios
+
+// api/ PostApi.tsx
+```tsx
+// delete method
+export const deletePost = (id: number) => {
+    return api.delete(`/posts/${id}`)
+}
+```
+
+// Posts.tsx
+```tsx
+const handleDelete = async(id: number) => {
+    try {
+
+      const res = await deletePost(id);
+      console.log(res);
+      if(res.status === 200) {
+        const newUpdatedPosts = data.filter((curPost) => {
+          return curPost.id !== id;
+        });
+        setData(newUpdatedPosts);
+      }
+      else console.log("Failed to delete the post: ", res.status);
+
+    } catch(error) {
+      console.log(error);
+    }
+  }
 ```
