@@ -76,3 +76,43 @@ export default defineConfig([
 ```
 npm install axios
 ```
+
+## Get data using axios
+
+
+```
+// api/ PostApi.tsx
+import axios from "axios";
+
+const api = axios.create({
+    baseURL: "https://jsonplaceholder.typicode.com",
+});
+
+// get method
+export const getPost = () => {
+    return api.get("/posts");
+};
+```
+
+// App.tsx
+```
+import { useEffect } from "react";
+import { getPost } from "./api/PostApi";
+
+
+const App = () => {
+  
+  const getPostData = async () => {
+    const res = await getPost();
+    console.log(res);
+  }
+
+  useEffect(() => {
+    getPostData();
+  }, []);
+
+  return <h1>Hello React CURD</h1>
+}
+
+export default App;
+```
